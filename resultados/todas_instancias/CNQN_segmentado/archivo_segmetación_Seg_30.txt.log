@@ -1,0 +1,4 @@
+Nombre: Seg_30
+AVISO: VERTICES declarado=87, nodos identificables=54. Se conservan ambos datos sin modificar el archivo.
+AVISO: Inicio y termino diferentes o ausentes: se conservan sin imponer viajes cerrados.
+ERROR: Demanda ausente, invalida o mayor que Q: tarea 8

@@ -1,0 +1,5 @@
+Nombre: Renca Chiquito
+AVISO: NODOS_TERMINO declara 0: la fila final 0 se conserva como marcador, sin crear un nodo de termino.
+AVISO: VERTICES declarado=4754, nodos identificables=4755. Se conservan ambos datos sin modificar el archivo.
+AVISO: Inicio y termino diferentes o ausentes: se conservan sin imponer viajes cerrados.
+ERROR: Demanda ausente, invalida o mayor que Q: tarea 85

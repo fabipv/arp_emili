@@ -1,0 +1,164 @@
+Nombre: Seg_13
+AVISO: VERTICES declarado=63, nodos identificables=32. Se conservan ambos datos sin modificar el archivo.
+AVISO: Inicio y termino diferentes o ausentes: se conservan sin imponer viajes cerrados.
+Inicio: 199
+Termino: 466
+Capacidad Q: 470
+Carga por tarea: costo original del servicio
+Excepciones de carga indicadas: 0
+Giant tour (+ directa, - inversa): 38- 18+ 31+ 32+ 39+ 33- 27+ 13+ 7+ 19+ 20+ 35- 40- 21- 42+ 1+ 41+ 17- 10+ 22- 9+ 8+ 25- 34+ 5+ 14+ 29+ 28- 3- 4+ 16+ 36+ 11+ 26+ 23- 24- 12+ 6- 37+ 30+ 2+ 15+
+Ruta 1: carga=433.248/470 costo=634.417 tareas: 38- 18+ 31+ 32+
+  servicio ID 38: 199 -> 465
+  servicio ID 18: 465 -> 466
+  servicio ID 31: 466 -> 210
+  servicio ID 32: 210 -> 211
+  transito ID 32: 211 -> 210
+  transito ID 31: 210 -> 466
+Ruta 2: carga=451.431/470 costo=1127.827 tareas: 39+ 33- 27+ 13+
+  transito ID 38: 199 -> 465
+  transito ID 18: 465 -> 466
+  transito ID 31: 466 -> 210
+  servicio ID 39: 210 -> 243
+  servicio ID 33: 243 -> 133
+  servicio ID 27: 133 -> 466
+  servicio ID 13: 466 -> 508
+  transito ID 7: 508 -> 746
+  transito ID 19: 746 -> 210
+  transito ID 31: 210 -> 466
+Ruta 3: carga=342.378/470 costo=1119.377 tareas: 7+ 19+ 20+
+  transito ID 38: 199 -> 465
+  transito ID 6: 465 -> 225
+  transito ID 48: 225 -> 508
+  servicio ID 7: 508 -> 746
+  servicio ID 19: 746 -> 210
+  transito ID 39: 210 -> 243
+  servicio ID 20: 243 -> 884
+  transito ID 20: 884 -> 243
+  transito ID 33: 243 -> 133
+  transito ID 27: 133 -> 466
+Ruta 4: carga=386.29/470 costo=1143.17 tareas: 35- 40- 21-
+  transito ID 42: 199 -> 133
+  transito ID 33: 133 -> 243
+  transito ID 20: 243 -> 884
+  servicio ID 35: 884 -> 897
+  transito ID 47: 897 -> 545
+  transito ID 45: 545 -> 52
+  servicio ID 40: 52 -> 51
+  servicio ID 21: 51 -> 199
+  transito ID 38: 199 -> 465
+  transito ID 18: 465 -> 466
+Ruta 5: carga=385.179/470 costo=695.049 tareas: 42+ 1+ 41+
+  servicio ID 42: 199 -> 133
+  transito ID 33: 133 -> 243
+  servicio ID 1: 243 -> 545
+  transito ID 45: 545 -> 52
+  servicio ID 41: 52 -> 133
+  transito ID 27: 133 -> 466
+Ruta 6: carga=443.738/470 costo=1117.298 tareas: 17- 10+ 22-
+  servicio ID 17: 199 -> 356
+  servicio ID 10: 356 -> 357
+  servicio ID 22: 357 -> 431
+  transito ID 22: 431 -> 357
+  transito ID 12: 357 -> 51
+  transito ID 21: 51 -> 199
+  transito ID 38: 199 -> 465
+  transito ID 18: 465 -> 466
+Ruta 7: carga=373.454/470 costo=1383.417 tareas: 9+ 8+ 25-
+  transito ID 21: 199 -> 51
+  transito ID 12: 51 -> 357
+  transito ID 22: 357 -> 431
+  servicio ID 9: 431 -> 430
+  servicio ID 8: 430 -> 361
+  servicio ID 25: 361 -> 697
+  transito ID 25: 697 -> 361
+  transito ID 2: 361 -> 362
+  transito ID 15: 362 -> 465
+  transito ID 18: 465 -> 466
+Ruta 8: carga=387.458/470 costo=1895.515 tareas: 34+ 5+ 14+ 29+
+  transito ID 17: 199 -> 356
+  transito ID 36: 356 -> 430
+  transito ID 16: 430 -> 940
+  transito ID 34: 940 -> 697
+  servicio ID 34: 697 -> 940
+  servicio ID 5: 940 -> 302
+  servicio ID 14: 302 -> 303
+  servicio ID 29: 303 -> 752
+  transito ID 29: 752 -> 303
+  transito ID 14: 303 -> 302
+  transito ID 5: 302 -> 940
+  transito ID 16: 940 -> 430
+  transito ID 8: 430 -> 361
+  transito ID 2: 361 -> 362
+  transito ID 15: 362 -> 465
+  transito ID 18: 465 -> 466
+Ruta 9: carga=335.105/470 costo=1937.479 tareas: 28- 3-
+  transito ID 17: 199 -> 356
+  transito ID 36: 356 -> 430
+  transito ID 16: 430 -> 940
+  transito ID 5: 940 -> 302
+  transito ID 14: 302 -> 303
+  servicio ID 28: 303 -> 540
+  transito ID 44: 540 -> 539
+  servicio ID 3: 539 -> 597
+  transito ID 4: 597 -> 940
+  transito ID 16: 940 -> 430
+  transito ID 8: 430 -> 361
+  transito ID 2: 361 -> 362
+  transito ID 15: 362 -> 465
+  transito ID 18: 465 -> 466
+Ruta 10: carga=459.078/470 costo=1500.001 tareas: 4+ 16+ 36+
+  transito ID 17: 199 -> 356
+  transito ID 36: 356 -> 430
+  transito ID 16: 430 -> 940
+  transito ID 4: 940 -> 597
+  servicio ID 4: 597 -> 940
+  servicio ID 16: 940 -> 430
+  servicio ID 36: 430 -> 356
+  transito ID 17: 356 -> 199
+  transito ID 38: 199 -> 465
+  transito ID 18: 465 -> 466
+Ruta 11: carga=437.605/470 costo=1682.352 tareas: 11+ 26+ 23-
+  transito ID 21: 199 -> 51
+  transito ID 12: 51 -> 357
+  servicio ID 11: 357 -> 733
+  transito ID 49: 733 -> 753
+  servicio ID 26: 753 -> 431
+  servicio ID 23: 431 -> 302
+  transito ID 5: 302 -> 940
+  transito ID 16: 940 -> 430
+  transito ID 8: 430 -> 361
+  transito ID 2: 361 -> 362
+  transito ID 15: 362 -> 465
+  transito ID 18: 465 -> 466
+Ruta 12: carga=378.758/470 costo=1790.257 tareas: 24- 12+
+  transito ID 17: 199 -> 356
+  transito ID 36: 356 -> 430
+  transito ID 16: 430 -> 940
+  transito ID 5: 940 -> 302
+  servicio ID 24: 302 -> 539
+  transito ID 24: 539 -> 302
+  transito ID 23: 302 -> 431
+  transito ID 22: 431 -> 357
+  servicio ID 12: 357 -> 51
+  transito ID 21: 51 -> 199
+  transito ID 38: 199 -> 465
+  transito ID 18: 465 -> 466
+Ruta 13: carga=347.118/470 costo=1039.16 tareas: 6- 37+ 30+
+  transito ID 38: 199 -> 465
+  servicio ID 6: 465 -> 225
+  transito ID 46: 225 -> 224
+  servicio ID 37: 224 -> 362
+  servicio ID 30: 362 -> 356
+  transito ID 17: 356 -> 199
+  transito ID 38: 199 -> 465
+  transito ID 18: 465 -> 466
+Ruta 14: carga=312.34/470 costo=856.355 tareas: 2+ 15+
+  transito ID 17: 199 -> 356
+  transito ID 36: 356 -> 430
+  transito ID 8: 430 -> 361
+  servicio ID 2: 361 -> 362
+  servicio ID 15: 362 -> 465
+  transito ID 18: 465 -> 466
+Rutas: 14
+Costo total: 17921.674
+Validacion: VALIDA

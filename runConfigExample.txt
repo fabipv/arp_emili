@@ -1,0 +1,1 @@
+./run_config.sh testRun301022 /home/lperez/vrp/emili_vrp/cvrp_grammar.xml 0.3 1000 /home/lperez/vrp/emili_vrp/instancias_taillard/ first test to try run_config

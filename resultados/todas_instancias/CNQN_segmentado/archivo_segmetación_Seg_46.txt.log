@@ -1,0 +1,120 @@
+Nombre: Seg_46
+AVISO: VERTICES declarado=45, nodos identificables=30. Se conservan ambos datos sin modificar el archivo.
+Inicio: 212
+Termino: 212
+Capacidad Q: 470
+Carga por tarea: costo original del servicio
+Excepciones de carga indicadas: 0
+Giant tour (+ directa, - inversa): 8+ 16+ 12+ 3+ 7- 9- 2+ 1+ 4+ 17+ 10+ 13+ 14+ 5- 6+ 15+ 11+
+Ruta 1: carga=439.899/470 costo=884.796 tareas: 8+ 16+ 12+ 3+
+  servicio ID 8: 212 -> 405
+  servicio ID 16: 405 -> 232
+  servicio ID 12: 232 -> 734
+  servicio ID 3: 734 -> 45
+  transito ID 7: 45 -> 330
+  transito ID 2: 330 -> 232
+  transito ID 26: 232 -> 213
+  transito ID 28: 213 -> 212
+Ruta 2: carga=443.305/470 costo=1504.774 tareas: 7- 9- 2+ 1+
+  transito ID 8: 212 -> 405
+  transito ID 16: 405 -> 232
+  transito ID 12: 232 -> 734
+  transito ID 3: 734 -> 45
+  servicio ID 7: 45 -> 330
+  servicio ID 9: 330 -> 329
+  transito ID 9: 329 -> 330
+  servicio ID 2: 330 -> 232
+  transito ID 16: 232 -> 405
+  servicio ID 1: 405 -> 329
+  transito ID 9: 329 -> 330
+  transito ID 2: 330 -> 232
+  transito ID 26: 232 -> 213
+  transito ID 28: 213 -> 212
+Ruta 3: carga=405.729/470 costo=2696.623 tareas: 4+ 17+ 10+ 13+
+  transito ID 8: 212 -> 405
+  transito ID 16: 405 -> 232
+  transito ID 12: 232 -> 734
+  transito ID 3: 734 -> 45
+  servicio ID 4: 45 -> 577
+  transito ID 4: 577 -> 45
+  servicio ID 17: 45 -> 46
+  transito ID 23: 46 -> 578
+  servicio ID 10: 578 -> 577
+  transito ID 4: 577 -> 45
+  transito ID 17: 45 -> 46
+  transito ID 23: 46 -> 578
+  transito ID 32: 578 -> 586
+  transito ID 31: 586 -> 760
+  servicio ID 13: 760 -> 820
+  transito ID 13: 820 -> 760
+  transito ID 31: 760 -> 586
+  transito ID 32: 586 -> 578
+  transito ID 23: 578 -> 46
+  transito ID 20: 46 -> 185
+  transito ID 19: 185 -> 330
+  transito ID 2: 330 -> 232
+  transito ID 26: 232 -> 213
+  transito ID 28: 213 -> 212
+Ruta 4: carga=436.538/470 costo=2785.471 tareas: 14+ 5- 6+
+  transito ID 8: 212 -> 405
+  transito ID 16: 405 -> 232
+  transito ID 12: 232 -> 734
+  transito ID 3: 734 -> 45
+  transito ID 17: 45 -> 46
+  transito ID 23: 46 -> 578
+  transito ID 32: 578 -> 586
+  transito ID 31: 586 -> 760
+  transito ID 13: 760 -> 820
+  transito ID 33: 820 -> 609
+  transito ID 34: 609 -> 610
+  servicio ID 14: 610 -> 580
+  transito ID 24: 580 -> 445
+  servicio ID 5: 445 -> 444
+  servicio ID 6: 444 -> 589
+  transito ID 15: 589 -> 609
+  transito ID 33: 609 -> 820
+  transito ID 13: 820 -> 760
+  transito ID 31: 760 -> 586
+  transito ID 32: 586 -> 578
+  transito ID 23: 578 -> 46
+  transito ID 20: 46 -> 185
+  transito ID 19: 185 -> 330
+  transito ID 2: 330 -> 232
+  transito ID 26: 232 -> 213
+  transito ID 28: 213 -> 212
+Ruta 5: carga=394.02/470 costo=3704.559 tareas: 15+ 11+
+  transito ID 8: 212 -> 405
+  transito ID 16: 405 -> 232
+  transito ID 12: 232 -> 734
+  transito ID 3: 734 -> 45
+  transito ID 17: 45 -> 46
+  transito ID 23: 46 -> 578
+  transito ID 32: 578 -> 586
+  transito ID 31: 586 -> 760
+  transito ID 13: 760 -> 820
+  transito ID 33: 820 -> 609
+  transito ID 34: 609 -> 610
+  transito ID 36: 610 -> 444
+  transito ID 6: 444 -> 589
+  servicio ID 15: 589 -> 609
+  transito ID 34: 609 -> 610
+  transito ID 36: 610 -> 444
+  transito ID 5: 444 -> 445
+  servicio ID 11: 445 -> 593
+  transito ID 11: 593 -> 445
+  transito ID 5: 445 -> 444
+  transito ID 6: 444 -> 589
+  transito ID 15: 589 -> 609
+  transito ID 33: 609 -> 820
+  transito ID 13: 820 -> 760
+  transito ID 31: 760 -> 586
+  transito ID 32: 586 -> 578
+  transito ID 23: 578 -> 46
+  transito ID 20: 46 -> 185
+  transito ID 19: 185 -> 330
+  transito ID 2: 330 -> 232
+  transito ID 26: 232 -> 213
+  transito ID 28: 213 -> 212
+Rutas: 5
+Costo total: 11576.223
+Validacion: VALIDA

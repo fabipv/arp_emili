@@ -1,0 +1,120 @@
+#!/bin/bash
+#                 ______ __  __ _____ _      _____ 
+#                |  ____|  \/  |_   _| |    |_   _|
+#                | |__  | \  / | | | | |      | |  
+#                |  __| | |\/| | | | | |      | | 
+#                | |____| |  | |_| |_| |____ _| |_ 
+#                |______|_|  |_|_____|______|_____|
+#
+# EMILI hook-run ver 1.8-at for irace >= 3.0 
+#
+# changelog:
+# ver 1.8-at
+#     - Restructured the script in a more "human readable" way
+# ver 1.7-at 
+#     - This is a 1.7 version that implements the anytime behavior evaluation using hv
+# ver 1.7
+#     - removed the swap between STDOUT and STDERR, now they are redirected to two temp files
+# ver 1.6a
+#     - fixed the if that checks if the value returned by EMILI is a number	
+# ver 1.6
+#     - added retry mechanism
+# ver 1.5
+#     - added error reporting
+# ver 1.0
+#     - changed from "compile and run" to "parse and run"
+
+
+# SETUP VARIABLES AND READ PARAMETERS
+##########################################
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lustre/home/mascia/software/lib:/lustre/home/mascia/software/lib64
+INSTANCE=$4
+INSTANCEID=$2
+RND_SEED=$3
+CANDNUM=$1
+shift 4
+PARAMS=$*
+TRIES=3
+OUTPUT="/dev/null"
+TIMER_SETTING='-ro 0.03'
+REF_POINT="400 21000"
+ERR_OUT='/home/fpagnozzi/noccirace/ms-grammar5/anyt1/ERROR'
+HOST_NAME=`hostname`
+
+# SETUP TOOL PATHS 
+##########################################
+GRAMMAR2CODE="/home/fpagnozzi/Federico/grammar2code/build/grammar2code"
+EMILI_SRC="/home/fpagnozzi/emili"
+HV_BIN="/lustre/home/fpagnozzi/noccirace/hvtests/hv-1.3-src/hv"
+GRAMMAR_DIR='/lustre/home/fpagnozzi/emili/grammars/pfsp-ms-5.xml'
+EMILI_BIN='/home/fpagnozzi/emili/statbuild/emili'
+
+# CREATE TEMP FILES
+##########################################
+BUILD_DIR=`mktemp -d`
+STDOUT=`mktemp`
+STDERR=`mktemp`
+HVIN=`mktemp`
+
+# FUNCTIONS
+##########################################
+
+function extract_hv_res {
+       cat $STDOUT | grep -e "^[0-9]" | awk '{print $1 " " $3}' > $HVIN
+       HVIN_C=`cat $HVIN`
+       if [ -z "$HVIN_C" ]
+       then
+           TIME_RUN=`cat $STDOUT | grep "time" | tail -n1 | cut -d":" -f2`
+           OBJC_RUN=`cat $STDERR | tail -n1`
+           echo "${TIME_RUN##*()} $OBJC_RUN" > $HVIN
+       fi
+       OUT_VALUE=$($HV_BIN -r "$REF_POINT" $HVIN 2> $OUTPUT)
+}
+
+# CONVERT ALGORITHM DESCRIPTION FOR EMILI PARSER
+##########################################
+$GRAMMAR2CODE $GRAMMAR_DIR -t $BUILD_DIR $PARAMS 1>> $OUTPUT 2>> $OUTPUT
+pushd $BUILD_DIR  1>> $OUTPUT
+PARAMETERS=`cat params`
+
+# RUN EMILI
+##########################################
+$EMILI_BIN $INSTANCE $PARAMETERS $TIMER_SETTING rnds $RND_SEED 1> $STDOUT 2> $STDERR
+
+# EXTRACT RESULT FROM EMILI OUTPUT
+##########################################
+#OUT_VALUE=`cat $STDERR | tail -n1`
+OUT_VALUE="inf"
+extract_hv_res
+
+# CHECK THAT OUTVALUE IS VALID
+##########################################
+if echo "$OUT_VALUE" | grep -Eq "^[0-9]+(\.[0-9]+([eE][+-][0-9]+)?)?$"
+then
+	echo "-$OUT_VALUE"
+else
+        G2Cp=${@:3}
+       	OUT_V="inf"
+	printf "****ERROR****\nnode: %s\nInstance %s\nRandom seed: %s\n Params to g2c\n %s \n\n Params to EMILI\n %s \n OUTPUT \n %s \n **********\n\n" "${HOST_NAME}" "${INSTANCE}" "${RND_SEED}" "${G2Cp[@]}" "${PARAMETERS}" "${OUT_VALUE}" >> $ERR_OUT
+	for i in `seq 1 $TRIES`
+	    do	
+		$EMILI_BIN $INSTANCE $PARAMETERS $TIMER_SETTING rnds $RND_SEED 1> $STDOUT 2> $STDERR
+		extract_hv_res
+	    if echo "$OUT_VALUE" | grep -Eq "^[0-9]+(\.[0-9]+([eE][+-][0-9]+)?)?$"
+            then
+	      OUT_V="-$OUT_VALUE"
+	      break
+	    else
+	      printf "****ERROR %s****\nInstance %s\nRandom seed: %s\n Params to g2c\n %s \n\n Params to EMILI\n %s \n OUTPUT \n %s \n **********\n\n" "$i" "${INSTANCE}" "${RND_SEED}" "${G2Cp[@]}" "${PARAMETERS}" "${OUT_VALUE}" >> $ERR_OUT
+            fi
+	done
+	echo "$OUT_V"
+fi 
+popd 1>> $OUTPUT
+
+# CLEAN TEMP FILES
+##########################################
+rm -f $STDOUT
+rm -f $STDERR
+rm -f $HVIN
+rm -rf $BUILD_DIR

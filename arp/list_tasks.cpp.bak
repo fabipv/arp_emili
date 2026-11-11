@@ -1,0 +1,106 @@
+#include "arp_tasks.h"
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+int main(int argc, char** argv) {
+    // Se acepta:
+    // arp_tasks RUTA_INSTANCIA
+    // arp_tasks RUTA_INSTANCIA --all
+    if (argc < 2 || argc > 3
+        || (argc == 3 && std::string(argv[2]) != "--all")) {
+
+        std::cerr << "Uso: arp_tasks RUTA_INSTANCIA [--all]\n";
+        return 2;
+    }
+
+    try {
+        // Usa el lector que ya existe.
+        arp::ArpInstance instance;
+        instance.readDataFromFile(argv[1]);
+
+        // Construye el catálogo de servicios requeridos.
+        const arp::TaskCatalog catalog(instance);
+
+        std::size_t bidirectional = 0;
+
+        for (const auto& task : catalog.tasks()) {
+            if (task.reversible) {
+                ++bidirectional;
+            }
+        }
+
+        const std::size_t totalTasks = catalog.tasks().size();
+        const std::size_t unidirectional =
+            totalTasks - bidirectional;
+
+        // Una orientación por cada uni y dos por cada bi.
+        const std::size_t totalOrientations =
+            unidirectional + 2 * bidirectional;
+
+        std::cout << std::setprecision(12);
+
+        std::cout
+            << "Nombre: " << instance.name
+            << "\nCalles totales: " << instance.links.size()
+            << "\nTareas requeridas: " << totalTasks
+            << "\nTareas uni: " << unidirectional
+            << "\nTareas bi: " << bidirectional
+            << "\nOrientaciones permitidas: " << totalOrientations
+            << "\nCalles opcionales (solo transito): "
+            << instance.links.size() - totalTasks
+            << '\n';
+
+        // Conserva los avisos del lector original.
+        for (const auto& warning : instance.warnings) {
+            std::cout << "AVISO: " << warning << '\n';
+        }
+
+        // Sin --all muestra las primeras cinco tareas.
+        const std::size_t shown =
+            argc == 3
+                ? totalTasks
+                : std::min<std::size_t>(5, totalTasks);
+
+        std::cout
+            << "Catalogo: " << shown
+            << " de " << totalTasks
+            << " tareas\n";
+
+        for (std::size_t i = 0; i < shown; ++i) {
+            const auto& task = catalog.tasks()[i];
+
+            std::cout
+                << "ID " << task.id
+                << " | "
+                << (task.reversible ? "bi" : "uni");
+
+            // Muestra los sentidos permitidos del mismo servicio.
+            for (const auto& orientation :
+                 catalog.orientations(task.id)) {
+
+                std::cout
+                    << " | "
+                    << (orientation.reversed
+                        ? "inversa "
+                        : "directa ")
+                    << orientation.from
+                    << " -> "
+                    << orientation.to;
+            }
+
+            std::cout
+                << " | costo " << task.cost
+                << " | linea " << task.sourceLine
+                << '\n';
+        }
+
+        return 0;
+
+    } catch (const std::exception& error) {
+        std::cerr << "ERROR: " << error.what() << '\n';
+        return 1;
+    }
+}
